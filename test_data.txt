@@ -1,0 +1,5 @@
+{
+	"country": "United states",
+	"fromDate": "7-february-2022",
+	"toDate": "15-february-2022"
+}
