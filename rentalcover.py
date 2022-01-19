@@ -17,7 +17,7 @@ class InstantQuote(unittest.TestCase):
 
         file = open("test_data.txt", "r")
         contents = file.read()
-        self.dictionary = ast.literal_eval(contents)
+        self.test_data = ast.literal_eval(contents)
         file.close()        
     
     def test_country_vehicletype_date_based_quote(self):
@@ -25,16 +25,14 @@ class InstantQuote(unittest.TestCase):
         FOURBYFOUR = '4x4'
         getinstquotesrchpage = QuoteSearch.GetInstantQuote(self.driver)
         plcyinfpymntpage = QuoteResult.PolicyInformationAndPayment(self.driver)
-        getinstquotesrchpage.enter_country_and_select_from_suggestions(self.dictionary['country'])
+
+        getinstquotesrchpage.enter_country_and_select_from_suggestions(self.test_data['country'])
         getinstquotesrchpage.click_on_from_date_picker()
-        getinstquotesrchpage.selectdate(self.dictionary['fromDate'])
+        getinstquotesrchpage.selectdate(self.test_data['fromDate'])
 
         # Allowing a slight delay (if any) for the calendar to refresh
         self.driver.implicitly_wait(1)
-        getinstquotesrchpage.selectdate(self.dictionary['toDate'])
-
-        # This webelement list size will be greater than 0 if the preselected vehicle is 4*4 in which case we do not want to make any change to the vehicle type
-        
+        getinstquotesrchpage.selectdate(self.test_data['toDate'])
         isCarPresent = False
         isFourByFourPresent = False
         if len(getinstquotesrchpage.is_fourbyfour_vehicle_preselected()) == 0:
@@ -44,7 +42,6 @@ class InstantQuote(unittest.TestCase):
             # This wait is to check if the first select value is loaded properly which will most certainly guarantee that the entire list is loaded properly.
             WebDriverWait(self.driver, 10).until(lambda wd: len(getinstquotesrchpage.get_vehicle_type_select_list().options[0].accessible_name)>0)
             for index in range(0, len(getinstquotesrchpage.get_vehicle_type_select_list().options)):
-                print('Vehicle is: '+getinstquotesrchpage.get_vehicle_type_select_list().options[index].accessible_name)
                 if getinstquotesrchpage.get_vehicle_type_select_list().options[index].accessible_name == FOURBYFOUR:
                     isFourByFourPresent = True
                     getinstquotesrchpage.select_vehicle_type_by_value(FOURBYFOUR)
