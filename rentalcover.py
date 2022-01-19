@@ -31,7 +31,6 @@ class InstantQuote(unittest.TestCase):
 
         # Allowing a slight delay (if any) for the calendar to refresh
         self.driver.implicitly_wait(1)
-        getinstquotesrchpage.click_on_to_date_picker()
         getinstquotesrchpage.selectdate(self.dictionary['toDate'])
 
         # This webelement list size will be greater than 0 if the preselected vehicle is 4*4 in which case we do not want to make any change to the vehicle type
