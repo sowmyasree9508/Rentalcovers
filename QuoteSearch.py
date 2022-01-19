@@ -18,10 +18,14 @@ class GetInstantQuote(object):
         countryElement.send_keys(Keys.ENTER)
 
     def click_on_from_date_picker(self):
-        self.driver.find_element(*QuoteSearchPageLocators.FROMDATE_PICKER).click()
+        fromDatePicker = self.driver.find_element(*QuoteSearchPageLocators.FROMDATE_PICKER)
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(fromDatePicker))
+        fromDatePicker.click()
 
     def click_on_to_date_picker(self):
-        self.driver.find_element(*QuoteSearchPageLocators.TODATE_PICKER).click()
+        toDatePicker = self.driver.find_element(*QuoteSearchPageLocators.TODATE_PICKER)
+        WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable(toDatePicker))
+        toDatePicker.click()
 
     def is_fourbyfour_vehicle_preselected(self):
         return self.driver.find_elements(*QuoteSearchPageLocators.ISFOURBYFOURVEHICLE_PRESELECTED_ELEMENT)
