@@ -1,4 +1,6 @@
-# Python based project to test Web Applications using Selenium library in Page Object Model
+# Rental Covers - Instant quote
+
+Web Test automation project written in Python language using Selenium library in Page object model structuring
 
 ## commands
 
