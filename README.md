@@ -3,10 +3,10 @@
 ## commands
 
 
-### pip install -r requirements.txt
+### `pip install -r requirements.txt`
 
 To install all the python libraries required as specified in the requirements.txt file
 
-### python rentalcover.py
+### `python rentalcover.py`
 
 Happy running the file :grinning: :grinning: :grinning: :grinning:
