@@ -57,6 +57,4 @@ class GetInstantQuote(object):
         for i in range(0, calendarpaginationcounter):
             self.driver.find_element(*QuoteSearchPageLocators.NEXTCALENDARMONTH_BUTTON).click()
         dateelement = self.driver.find_element(By.XPATH, '//td[@data-month=\'' + str(desiredmonth-1) + '\']//a[contains(@class,\'ui-state-default\') and text()=\'' + desireddate + '\']')
-        dateelement.click()                
-
-
+        dateelement.click()

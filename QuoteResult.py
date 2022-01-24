@@ -12,4 +12,4 @@ class PolicyInformationAndPayment(object):
             return False    
 
     def get_quote_id(self) -> str:
-        return self.driver.current_url.split('/')[5]              
+        return self.driver.current_url.split('/')[5]
